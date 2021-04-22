@@ -37,10 +37,10 @@ public class DriverFactory
 				chromedriverExecutable = "chromedriver.exe";
 				break;
 			case "MAC": 
-				chromedriverExecutable = "chromedriver";
+				chromedriverExecutable = "/usr/local/bin/chromedriver";
 				break;
 			case "LINUX": 
-				chromedriverExecutable = "chromdriver";
+				chromedriverExecutable = "chromedriver";
 				break;
 			default: 
 				throw new RuntimeException("unknown OS: " + os);
