@@ -64,7 +64,8 @@ public class DriverFactory
 	
 	public void setChromeDriver()
 	{
-		System.setProperty("webdriver.chrome.driver", getPathToChromeDriver());
+		
+		System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 		System.out.println("webdriver.chrome.drive: " + System.getProperty("webdriver.chrome.driver"));
 
 	}
