@@ -51,7 +51,8 @@ public class AirportStatusTest extends WebDriverTest
 		      	{"MIA", "On Time"},
 		      	{"SJC", "On Time"},
 		      	{"SAN", "On Time"},
-		      	{"ORD", "On Time"}
+		      	{"ORD", "On Time"},
+		      	{"OKC", "Delayed"}
         };
 		
 		return airportCodes;
