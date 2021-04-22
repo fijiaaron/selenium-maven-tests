@@ -46,10 +46,10 @@ public class AirportStatusTest extends WebDriverTest
 	public Object[][] airportCodes()
 	{
 		Object[][] airportCodes = new Object[][] {
-		      	{"KGPI", "On Time"},
-		      	{"WPI", "On Time"},
+		      	{"GPI", "On Time"},
+		      	{"SNA", "On Time"},
 		      	{"MIA", "On Time"},
-		      	{"SJC", "Delayed"},
+		      	{"SJC", "On Time"},
 		      	{"SAN", "On Time"},
 		      	{"ORD", "On Time"}
         };
