@@ -1,20 +1,22 @@
 package faa;
 
 import org.openqa.selenium.By;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 public class AirportStatusTest extends WebDriverTest
 {
-	@Test
-	public void getAirportStatus() 
+	@Test(dataProvider = "airportCodes")
+	public void getAirportStatus(String airportCode, String delayStatus) 
 	{
+		System.out.println("data:" + airportCode + " " + delayStatus);
+		
 		driver.get("https://www.faa.gov/");
 		driver.manage().window().maximize();
-		
 	
-	    driver.findElement(By.id("airportCode")).sendKeys("KGPI");
+	    driver.findElement(By.id("airportCode")).sendKeys(airportCode);
 	    driver.findElement(By.id("checkAirport")).click();
 
 	    By airportInfo = By.cssSelector(".airportInfo");
@@ -36,6 +38,22 @@ public class AirportStatusTest extends WebDriverTest
 	    System.out.println("wind: " + wind);
 	    System.out.println("lastUpdated: " + lastUpdated);
 	    
-	    assertThat(status).isEqualTo("On Time");
+	    assertThat(status).isEqualTo(delayStatus);
+	    assertThat(airport).startsWith(airportCode);
+	}
+	
+	@DataProvider(name = "airportCodes")
+	public Object[][] airportCodes()
+	{
+		Object[][] airportCodes = new Object[][] {
+		      	{"KGPI", "On Time"},
+		      	{"WPI", "On Time"},
+		      	{"MIA", "On Time"},
+		      	{"SJC", "Delayed"},
+		      	{"SAN", "On Time"},
+		      	{"ORD", "On Time"}
+        };
+		
+		return airportCodes;
 	}
 }
