@@ -20,9 +20,11 @@ public class AirportStatusTest extends WebDriverTest
 	    driver.findElement(By.id("checkAirport")).click();
 
 	    By airportInfo = By.cssSelector(".airportInfo");
-	    
-	    wait.until(presenceOfElementLocated(airportInfo));
-	    
+	    By statusLocator = By.cssSelector(".delayData > h3");
+
+	    wait.until(visibilityOfElementLocated(airportInfo));
+	    wait.until(visibilityOfElementLocated(statusLocator));
+
 	    String airport = driver.findElement(By.cssSelector(".airportInfo")).getText();
 	    String status = driver.findElement(By.cssSelector(".delayData > h3")).getText();
 	    String weather = driver.findElement(By.cssSelector(".weatherData > p:nth-child(1)")).getText();
